@@ -1,0 +1,14 @@
+assign(domain_size, 8).
+assign(max_models, -1).
+set(arithmetic).
+
+
+formulas(utils).
+	r1h <-> (l1 = 2 & h1 = 3).
+	r1v <-> (l1 = 3 & h1 = 2).
+	-(r1h -> r1v) | -(r1v -> r1h).
+
+	X1 >= 0 & (X1 + l1 <= 3).
+	Y1 >= 0 & (Y1 + h1 <= 3).
+
+end_of_list.
