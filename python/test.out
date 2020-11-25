@@ -1,0 +1,222 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 3270 was started by user on ubuntu,
+Wed Nov 25 06:41:49 2020
+The command was "mace4 -f test.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file test.in
+
+assign(domain_size,8).
+    % assign(domain_size, 8) -> assign(start_size, 8).
+    % assign(domain_size, 8) -> assign(end_size, 8).
+assign(max_models,1).
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+
+formulas(rectangles).
+r0h <-> L0 = 2 & H0 = 3.
+r0v <-> L0 = 3 & H0 = 2.
+-(r0h -> r0v) | -(r0v -> r0h).
+r1h <-> L1 = 2 & H1 = 3.
+r1v <-> L1 = 3 & H1 = 2.
+-(r1h -> r1v) | -(r1v -> r1h).
+r2h <-> L2 = 2 & H2 = 3.
+r2v <-> L2 = 3 & H2 = 2.
+-(r2h -> r2v) | -(r2v -> r2h).
+r3h <-> L3 = 2 & H3 = 3.
+r3v <-> L3 = 3 & H3 = 2.
+-(r3h -> r3v) | -(r3v -> r3h).
+end_of_list.
+
+formulas(bounds).
+X0 >= 0 & X0 + L0 <= 8.
+Y0 >= 0 & Y0 + H0 <= 4.
+X1 >= 0 & X1 + L1 <= 8.
+Y1 >= 0 & Y1 + H1 <= 4.
+X2 >= 0 & X2 + L2 <= 8.
+Y2 >= 0 & Y2 + H2 <= 4.
+X3 >= 0 & X3 + L3 <= 8.
+Y3 >= 0 & Y3 + H3 <= 4.
+end_of_list.
+
+formulas(intersections).
+X0 + L0 <= X1 | X1 + L1 <= X0 | Y0 + H0 <= Y1 | Y1 + H1 <= Y0.
+X0 + L0 <= X2 | X2 + L2 <= X0 | Y0 + H0 <= Y2 | Y2 + H2 <= Y0.
+X0 + L0 <= X3 | X3 + L3 <= X0 | Y0 + H0 <= Y3 | Y3 + H3 <= Y0.
+X1 + L1 <= X2 | X2 + L2 <= X1 | Y1 + H1 <= Y2 | Y2 + H2 <= Y1.
+X1 + L1 <= X3 | X3 + L3 <= X1 | Y1 + H1 <= Y3 | Y3 + H3 <= Y1.
+X2 + L2 <= X3 | X3 + L3 <= X2 | Y2 + H2 <= Y3 | Y3 + H3 <= Y2.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 r0h <-> L0 = 2 & H0 = 3 # label(non_clause).  [assumption].
+2 r0v <-> L0 = 3 & H0 = 2 # label(non_clause).  [assumption].
+3 -(r0h -> r0v) | -(r0v -> r0h) # label(non_clause).  [assumption].
+4 r1h <-> L1 = 2 & H1 = 3 # label(non_clause).  [assumption].
+5 r1v <-> L1 = 3 & H1 = 2 # label(non_clause).  [assumption].
+6 -(r1h -> r1v) | -(r1v -> r1h) # label(non_clause).  [assumption].
+7 r2h <-> L2 = 2 & H2 = 3 # label(non_clause).  [assumption].
+8 r2v <-> L2 = 3 & H2 = 2 # label(non_clause).  [assumption].
+9 -(r2h -> r2v) | -(r2v -> r2h) # label(non_clause).  [assumption].
+10 r3h <-> L3 = 2 & H3 = 3 # label(non_clause).  [assumption].
+11 r3v <-> L3 = 3 & H3 = 2 # label(non_clause).  [assumption].
+12 -(r3h -> r3v) | -(r3v -> r3h) # label(non_clause).  [assumption].
+13 X0 >= 0 & X0 + L0 <= 8 # label(non_clause).  [assumption].
+14 Y0 >= 0 & Y0 + H0 <= 4 # label(non_clause).  [assumption].
+15 X1 >= 0 & X1 + L1 <= 8 # label(non_clause).  [assumption].
+16 Y1 >= 0 & Y1 + H1 <= 4 # label(non_clause).  [assumption].
+17 X2 >= 0 & X2 + L2 <= 8 # label(non_clause).  [assumption].
+18 Y2 >= 0 & Y2 + H2 <= 4 # label(non_clause).  [assumption].
+19 X3 >= 0 & X3 + L3 <= 8 # label(non_clause).  [assumption].
+20 Y3 >= 0 & Y3 + H3 <= 4 # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-r0h | 2 = L0.
+-r0h | 3 = H0.
+r0h | 2 != L0 | 3 != H0.
+-r0v | 3 = L0.
+-r0v | H0 = 2.
+r0v | 3 != L0 | H0 != 2.
+r0h | r0v.
+-r0v | -r0h.
+-r1h | L1 = 2.
+-r1h | H1 = 3.
+r1h | L1 != 2 | H1 != 3.
+-r1v | L1 = 3.
+-r1v | H1 = 2.
+r1v | L1 != 3 | H1 != 2.
+r1h | r1v.
+-r1v | -r1h.
+-r2h | L2 = 2.
+-r2h | H2 = 3.
+r2h | L2 != 2 | H2 != 3.
+-r2v | L2 = 3.
+-r2v | H2 = 2.
+r2v | L2 != 3 | H2 != 2.
+r2h | r2v.
+-r2v | -r2h.
+-r3h | L3 = 2.
+-r3h | H3 = 3.
+r3h | L3 != 2 | H3 != 3.
+-r3v | L3 = 3.
+-r3v | H3 = 2.
+r3v | L3 != 3 | H3 != 2.
+r3h | r3v.
+-r3v | -r3h.
+X0 >= 0.
+X0 + L0 <= 8.
+Y0 >= 0.
+Y0 + H0 <= 4.
+X1 >= 0.
+X1 + L1 <= 8.
+Y1 >= 0.
+Y1 + H1 <= 4.
+X2 >= 0.
+X2 + L2 <= 8.
+Y2 >= 0.
+Y2 + H2 <= 4.
+X3 >= 0.
+X3 + L3 <= 8.
+Y3 >= 0.
+Y3 + H3 <= 4.
+X0 + L0 <= X1 | X1 + L1 <= X0 | Y0 + H0 <= Y1 | Y1 + H1 <= Y0.
+X0 + L0 <= X2 | X2 + L2 <= X0 | Y0 + H0 <= Y2 | Y2 + H2 <= Y0.
+X0 + L0 <= X3 | X3 + L3 <= X0 | Y0 + H0 <= Y3 | Y3 + H3 <= Y0.
+X1 + L1 <= X2 | X2 + L2 <= X1 | Y1 + H1 <= Y2 | Y2 + H2 <= Y1.
+X1 + L1 <= X3 | X3 + L3 <= X1 | Y1 + H1 <= Y3 | Y3 + H3 <= Y1.
+X2 + L2 <= X3 | X3 + L3 <= X2 | Y2 + H2 <= Y3 | Y3 + H3 <= Y2.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 8.
+
+============================== DOMAIN SIZE 8 =========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=1, seconds=0], [
+
+        function(H0, [ 2 ]),
+
+        function(H1, [ 2 ]),
+
+        function(H2, [ 2 ]),
+
+        function(H3, [ 2 ]),
+
+        function(L0, [ 3 ]),
+
+        function(L1, [ 3 ]),
+
+        function(L2, [ 3 ]),
+
+        function(L3, [ 3 ]),
+
+        function(X0, [ 0 ]),
+
+        function(X1, [ 0 ]),
+
+        function(X2, [ 3 ]),
+
+        function(X3, [ 3 ]),
+
+        function(Y0, [ 0 ]),
+
+        function(Y1, [ 2 ]),
+
+        function(Y2, [ 0 ]),
+
+        function(Y3, [ 2 ]),
+
+        relation(r0h, [ 0 ]),
+
+        relation(r0v, [ 1 ]),
+
+        relation(r1h, [ 0 ]),
+
+        relation(r1v, [ 1 ]),
+
+        relation(r2h, [ 0 ]),
+
+        relation(r2v, [ 1 ]),
+
+        relation(r3h, [ 0 ]),
+
+        relation(r3v, [ 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 8.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=54, kept=54.
+Selections=159, assignments=1206, propagations=28, current_models=1.
+Rewrite_terms=7891, rewrite_bools=3780, indexes=0.
+Rules_from_neg_clauses=0, cross_offs=0.
+
+============================== end of statistics =====================
+
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 3270 exit (max_models) Wed Nov 25 06:41:49 2020
+The process finished Wed Nov 25 06:41:49 2020
