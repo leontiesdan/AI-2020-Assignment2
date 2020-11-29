@@ -1,7 +1,7 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 3270 was started by user on ubuntu,
-Wed Nov 25 06:41:49 2020
+Process 10984 was started by user on ubuntu,
+Sun Nov 29 08:37:04 2020
 The command was "mace4 -f test.in".
 ============================== end of head ===========================
 
@@ -9,9 +9,9 @@ The command was "mace4 -f test.in".
 
 % Reading from file test.in
 
-assign(domain_size,8).
-    % assign(domain_size, 8) -> assign(start_size, 8).
-    % assign(domain_size, 8) -> assign(end_size, 8).
+assign(domain_size,6).
+    % assign(domain_size, 6) -> assign(start_size, 6).
+    % assign(domain_size, 6) -> assign(end_size, 6).
 assign(max_models,1).
 set(arithmetic).
     % set(arithmetic) -> clear(lnh).
@@ -20,38 +20,107 @@ set(arithmetic).
     % Declaring Mace4 arithmetic parse types.
 
 formulas(rectangles).
-r0h <-> L0 = 2 & H0 = 3.
-r0v <-> L0 = 3 & H0 = 2.
--(r0h -> r0v) | -(r0v -> r0h).
-r1h <-> L1 = 2 & H1 = 3.
-r1v <-> L1 = 3 & H1 = 2.
--(r1h -> r1v) | -(r1v -> r1h).
-r2h <-> L2 = 2 & H2 = 3.
-r2v <-> L2 = 3 & H2 = 2.
--(r2h -> r2v) | -(r2v -> r2h).
-r3h <-> L3 = 2 & H3 = 3.
-r3v <-> L3 = 3 & H3 = 2.
--(r3h -> r3v) | -(r3v -> r3h).
+r0h <-> L0 = 2 & H0 = 1.
+r0v <-> L0 = 1 & H0 = 2.
+r0v | r0h.
+r1h <-> L1 = 1 & H1 = 1.
+r1v <-> L1 = 1 & H1 = 1.
+r1v | r1h.
+r2h <-> L2 = 1 & H2 = 1.
+r2v <-> L2 = 1 & H2 = 1.
+r2v | r2h.
+r3h <-> L3 = 2 & H3 = 2.
+r3v <-> L3 = 2 & H3 = 2.
+r3v | r3h.
+r4h <-> L4 = 1 & H4 = 2.
+r4v <-> L4 = 2 & H4 = 1.
+r4v | r4h.
+r5h <-> L5 = 1 & H5 = 2.
+r5v <-> L5 = 2 & H5 = 1.
+r5v | r5h.
+r6h <-> L6 = 2 & H6 = 1.
+r6v <-> L6 = 1 & H6 = 2.
+r6v | r6h.
+r7h <-> L7 = 2 & H7 = 1.
+r7v <-> L7 = 1 & H7 = 2.
+r7v | r7h.
+r8h <-> L8 = 2 & H8 = 1.
+r8v <-> L8 = 1 & H8 = 2.
+r8v | r8h.
+r9h <-> L9 = 1 & H9 = 1.
+r9v <-> L9 = 1 & H9 = 1.
+r9v | r9h.
 end_of_list.
 
 formulas(bounds).
-X0 >= 0 & X0 + L0 <= 8.
+X0 >= 0 & X0 + L0 <= 6.
 Y0 >= 0 & Y0 + H0 <= 4.
-X1 >= 0 & X1 + L1 <= 8.
+X1 >= 0 & X1 + L1 <= 6.
 Y1 >= 0 & Y1 + H1 <= 4.
-X2 >= 0 & X2 + L2 <= 8.
+X2 >= 0 & X2 + L2 <= 6.
 Y2 >= 0 & Y2 + H2 <= 4.
-X3 >= 0 & X3 + L3 <= 8.
+X3 >= 0 & X3 + L3 <= 6.
 Y3 >= 0 & Y3 + H3 <= 4.
+X4 >= 0 & X4 + L4 <= 6.
+Y4 >= 0 & Y4 + H4 <= 4.
+X5 >= 0 & X5 + L5 <= 6.
+Y5 >= 0 & Y5 + H5 <= 4.
+X6 >= 0 & X6 + L6 <= 6.
+Y6 >= 0 & Y6 + H6 <= 4.
+X7 >= 0 & X7 + L7 <= 6.
+Y7 >= 0 & Y7 + H7 <= 4.
+X8 >= 0 & X8 + L8 <= 6.
+Y8 >= 0 & Y8 + H8 <= 4.
+X9 >= 0 & X9 + L9 <= 6.
+Y9 >= 0 & Y9 + H9 <= 4.
 end_of_list.
 
 formulas(intersections).
 X0 + L0 <= X1 | X1 + L1 <= X0 | Y0 + H0 <= Y1 | Y1 + H1 <= Y0.
 X0 + L0 <= X2 | X2 + L2 <= X0 | Y0 + H0 <= Y2 | Y2 + H2 <= Y0.
 X0 + L0 <= X3 | X3 + L3 <= X0 | Y0 + H0 <= Y3 | Y3 + H3 <= Y0.
+X0 + L0 <= X4 | X4 + L4 <= X0 | Y0 + H0 <= Y4 | Y4 + H4 <= Y0.
+X0 + L0 <= X5 | X5 + L5 <= X0 | Y0 + H0 <= Y5 | Y5 + H5 <= Y0.
+X0 + L0 <= X6 | X6 + L6 <= X0 | Y0 + H0 <= Y6 | Y6 + H6 <= Y0.
+X0 + L0 <= X7 | X7 + L7 <= X0 | Y0 + H0 <= Y7 | Y7 + H7 <= Y0.
+X0 + L0 <= X8 | X8 + L8 <= X0 | Y0 + H0 <= Y8 | Y8 + H8 <= Y0.
+X0 + L0 <= X9 | X9 + L9 <= X0 | Y0 + H0 <= Y9 | Y9 + H9 <= Y0.
 X1 + L1 <= X2 | X2 + L2 <= X1 | Y1 + H1 <= Y2 | Y2 + H2 <= Y1.
 X1 + L1 <= X3 | X3 + L3 <= X1 | Y1 + H1 <= Y3 | Y3 + H3 <= Y1.
+X1 + L1 <= X4 | X4 + L4 <= X1 | Y1 + H1 <= Y4 | Y4 + H4 <= Y1.
+X1 + L1 <= X5 | X5 + L5 <= X1 | Y1 + H1 <= Y5 | Y5 + H5 <= Y1.
+X1 + L1 <= X6 | X6 + L6 <= X1 | Y1 + H1 <= Y6 | Y6 + H6 <= Y1.
+X1 + L1 <= X7 | X7 + L7 <= X1 | Y1 + H1 <= Y7 | Y7 + H7 <= Y1.
+X1 + L1 <= X8 | X8 + L8 <= X1 | Y1 + H1 <= Y8 | Y8 + H8 <= Y1.
+X1 + L1 <= X9 | X9 + L9 <= X1 | Y1 + H1 <= Y9 | Y9 + H9 <= Y1.
 X2 + L2 <= X3 | X3 + L3 <= X2 | Y2 + H2 <= Y3 | Y3 + H3 <= Y2.
+X2 + L2 <= X4 | X4 + L4 <= X2 | Y2 + H2 <= Y4 | Y4 + H4 <= Y2.
+X2 + L2 <= X5 | X5 + L5 <= X2 | Y2 + H2 <= Y5 | Y5 + H5 <= Y2.
+X2 + L2 <= X6 | X6 + L6 <= X2 | Y2 + H2 <= Y6 | Y6 + H6 <= Y2.
+X2 + L2 <= X7 | X7 + L7 <= X2 | Y2 + H2 <= Y7 | Y7 + H7 <= Y2.
+X2 + L2 <= X8 | X8 + L8 <= X2 | Y2 + H2 <= Y8 | Y8 + H8 <= Y2.
+X2 + L2 <= X9 | X9 + L9 <= X2 | Y2 + H2 <= Y9 | Y9 + H9 <= Y2.
+X3 + L3 <= X4 | X4 + L4 <= X3 | Y3 + H3 <= Y4 | Y4 + H4 <= Y3.
+X3 + L3 <= X5 | X5 + L5 <= X3 | Y3 + H3 <= Y5 | Y5 + H5 <= Y3.
+X3 + L3 <= X6 | X6 + L6 <= X3 | Y3 + H3 <= Y6 | Y6 + H6 <= Y3.
+X3 + L3 <= X7 | X7 + L7 <= X3 | Y3 + H3 <= Y7 | Y7 + H7 <= Y3.
+X3 + L3 <= X8 | X8 + L8 <= X3 | Y3 + H3 <= Y8 | Y8 + H8 <= Y3.
+X3 + L3 <= X9 | X9 + L9 <= X3 | Y3 + H3 <= Y9 | Y9 + H9 <= Y3.
+X4 + L4 <= X5 | X5 + L5 <= X4 | Y4 + H4 <= Y5 | Y5 + H5 <= Y4.
+X4 + L4 <= X6 | X6 + L6 <= X4 | Y4 + H4 <= Y6 | Y6 + H6 <= Y4.
+X4 + L4 <= X7 | X7 + L7 <= X4 | Y4 + H4 <= Y7 | Y7 + H7 <= Y4.
+X4 + L4 <= X8 | X8 + L8 <= X4 | Y4 + H4 <= Y8 | Y8 + H8 <= Y4.
+X4 + L4 <= X9 | X9 + L9 <= X4 | Y4 + H4 <= Y9 | Y9 + H9 <= Y4.
+X5 + L5 <= X6 | X6 + L6 <= X5 | Y5 + H5 <= Y6 | Y6 + H6 <= Y5.
+X5 + L5 <= X7 | X7 + L7 <= X5 | Y5 + H5 <= Y7 | Y7 + H7 <= Y5.
+X5 + L5 <= X8 | X8 + L8 <= X5 | Y5 + H5 <= Y8 | Y8 + H8 <= Y5.
+X5 + L5 <= X9 | X9 + L9 <= X5 | Y5 + H5 <= Y9 | Y9 + H9 <= Y5.
+X6 + L6 <= X7 | X7 + L7 <= X6 | Y6 + H6 <= Y7 | Y7 + H7 <= Y6.
+X6 + L6 <= X8 | X8 + L8 <= X6 | Y6 + H6 <= Y8 | Y8 + H8 <= Y6.
+X6 + L6 <= X9 | X9 + L9 <= X6 | Y6 + H6 <= Y9 | Y9 + H9 <= Y6.
+X7 + L7 <= X8 | X8 + L8 <= X7 | Y7 + H7 <= Y8 | Y8 + H8 <= Y7.
+X7 + L7 <= X9 | X9 + L9 <= X7 | Y7 + H7 <= Y9 | Y9 + H9 <= Y7.
+X8 + L8 <= X9 | X9 + L9 <= X8 | Y8 + H8 <= Y9 | Y9 + H9 <= Y8.
 end_of_list.
 
 ============================== end of input ==========================
@@ -59,26 +128,46 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 r0h <-> L0 = 2 & H0 = 3 # label(non_clause).  [assumption].
-2 r0v <-> L0 = 3 & H0 = 2 # label(non_clause).  [assumption].
-3 -(r0h -> r0v) | -(r0v -> r0h) # label(non_clause).  [assumption].
-4 r1h <-> L1 = 2 & H1 = 3 # label(non_clause).  [assumption].
-5 r1v <-> L1 = 3 & H1 = 2 # label(non_clause).  [assumption].
-6 -(r1h -> r1v) | -(r1v -> r1h) # label(non_clause).  [assumption].
-7 r2h <-> L2 = 2 & H2 = 3 # label(non_clause).  [assumption].
-8 r2v <-> L2 = 3 & H2 = 2 # label(non_clause).  [assumption].
-9 -(r2h -> r2v) | -(r2v -> r2h) # label(non_clause).  [assumption].
-10 r3h <-> L3 = 2 & H3 = 3 # label(non_clause).  [assumption].
-11 r3v <-> L3 = 3 & H3 = 2 # label(non_clause).  [assumption].
-12 -(r3h -> r3v) | -(r3v -> r3h) # label(non_clause).  [assumption].
-13 X0 >= 0 & X0 + L0 <= 8 # label(non_clause).  [assumption].
-14 Y0 >= 0 & Y0 + H0 <= 4 # label(non_clause).  [assumption].
-15 X1 >= 0 & X1 + L1 <= 8 # label(non_clause).  [assumption].
-16 Y1 >= 0 & Y1 + H1 <= 4 # label(non_clause).  [assumption].
-17 X2 >= 0 & X2 + L2 <= 8 # label(non_clause).  [assumption].
-18 Y2 >= 0 & Y2 + H2 <= 4 # label(non_clause).  [assumption].
-19 X3 >= 0 & X3 + L3 <= 8 # label(non_clause).  [assumption].
-20 Y3 >= 0 & Y3 + H3 <= 4 # label(non_clause).  [assumption].
+1 r0h <-> L0 = 2 & H0 = 1 # label(non_clause).  [assumption].
+2 r0v <-> L0 = 1 & H0 = 2 # label(non_clause).  [assumption].
+3 r1h <-> L1 = 1 & H1 = 1 # label(non_clause).  [assumption].
+4 r1v <-> L1 = 1 & H1 = 1 # label(non_clause).  [assumption].
+5 r2h <-> L2 = 1 & H2 = 1 # label(non_clause).  [assumption].
+6 r2v <-> L2 = 1 & H2 = 1 # label(non_clause).  [assumption].
+7 r3h <-> L3 = 2 & H3 = 2 # label(non_clause).  [assumption].
+8 r3v <-> L3 = 2 & H3 = 2 # label(non_clause).  [assumption].
+9 r4h <-> L4 = 1 & H4 = 2 # label(non_clause).  [assumption].
+10 r4v <-> L4 = 2 & H4 = 1 # label(non_clause).  [assumption].
+11 r5h <-> L5 = 1 & H5 = 2 # label(non_clause).  [assumption].
+12 r5v <-> L5 = 2 & H5 = 1 # label(non_clause).  [assumption].
+13 r6h <-> L6 = 2 & H6 = 1 # label(non_clause).  [assumption].
+14 r6v <-> L6 = 1 & H6 = 2 # label(non_clause).  [assumption].
+15 r7h <-> L7 = 2 & H7 = 1 # label(non_clause).  [assumption].
+16 r7v <-> L7 = 1 & H7 = 2 # label(non_clause).  [assumption].
+17 r8h <-> L8 = 2 & H8 = 1 # label(non_clause).  [assumption].
+18 r8v <-> L8 = 1 & H8 = 2 # label(non_clause).  [assumption].
+19 r9h <-> L9 = 1 & H9 = 1 # label(non_clause).  [assumption].
+20 r9v <-> L9 = 1 & H9 = 1 # label(non_clause).  [assumption].
+21 X0 >= 0 & X0 + L0 <= 6 # label(non_clause).  [assumption].
+22 Y0 >= 0 & Y0 + H0 <= 4 # label(non_clause).  [assumption].
+23 X1 >= 0 & X1 + L1 <= 6 # label(non_clause).  [assumption].
+24 Y1 >= 0 & Y1 + H1 <= 4 # label(non_clause).  [assumption].
+25 X2 >= 0 & X2 + L2 <= 6 # label(non_clause).  [assumption].
+26 Y2 >= 0 & Y2 + H2 <= 4 # label(non_clause).  [assumption].
+27 X3 >= 0 & X3 + L3 <= 6 # label(non_clause).  [assumption].
+28 Y3 >= 0 & Y3 + H3 <= 4 # label(non_clause).  [assumption].
+29 X4 >= 0 & X4 + L4 <= 6 # label(non_clause).  [assumption].
+30 Y4 >= 0 & Y4 + H4 <= 4 # label(non_clause).  [assumption].
+31 X5 >= 0 & X5 + L5 <= 6 # label(non_clause).  [assumption].
+32 Y5 >= 0 & Y5 + H5 <= 4 # label(non_clause).  [assumption].
+33 X6 >= 0 & X6 + L6 <= 6 # label(non_clause).  [assumption].
+34 Y6 >= 0 & Y6 + H6 <= 4 # label(non_clause).  [assumption].
+35 X7 >= 0 & X7 + L7 <= 6 # label(non_clause).  [assumption].
+36 Y7 >= 0 & Y7 + H7 <= 4 # label(non_clause).  [assumption].
+37 X8 >= 0 & X8 + L8 <= 6 # label(non_clause).  [assumption].
+38 Y8 >= 0 & Y8 + H8 <= 4 # label(non_clause).  [assumption].
+39 X9 >= 0 & X9 + L9 <= 6 # label(non_clause).  [assumption].
+40 Y9 >= 0 & Y9 + H9 <= 4 # label(non_clause).  [assumption].
 
 ============================== end of process non-clausal formulas ===
 
@@ -86,137 +175,310 @@ end_of_list.
 
 formulas(mace4_clauses).
 -r0h | 2 = L0.
--r0h | 3 = H0.
-r0h | 2 != L0 | 3 != H0.
--r0v | 3 = L0.
+-r0h | H0 = 1.
+r0h | 2 != L0 | H0 != 1.
+-r0v | L0 = 1.
 -r0v | H0 = 2.
-r0v | 3 != L0 | H0 != 2.
-r0h | r0v.
--r0v | -r0h.
--r1h | L1 = 2.
--r1h | H1 = 3.
-r1h | L1 != 2 | H1 != 3.
--r1v | L1 = 3.
--r1v | H1 = 2.
-r1v | L1 != 3 | H1 != 2.
-r1h | r1v.
--r1v | -r1h.
--r2h | L2 = 2.
--r2h | H2 = 3.
-r2h | L2 != 2 | H2 != 3.
--r2v | L2 = 3.
--r2v | H2 = 2.
-r2v | L2 != 3 | H2 != 2.
-r2h | r2v.
--r2v | -r2h.
+r0v | L0 != 1 | H0 != 2.
+r0v | r0h.
+-r1h | L1 = 1.
+-r1h | H1 = 1.
+r1h | L1 != 1 | H1 != 1.
+-r1v | L1 = 1.
+-r1v | H1 = 1.
+r1v | L1 != 1 | H1 != 1.
+r1v | r1h.
+-r2h | L2 = 1.
+-r2h | H2 = 1.
+r2h | L2 != 1 | H2 != 1.
+-r2v | L2 = 1.
+-r2v | H2 = 1.
+r2v | L2 != 1 | H2 != 1.
+r2v | r2h.
 -r3h | L3 = 2.
--r3h | H3 = 3.
-r3h | L3 != 2 | H3 != 3.
--r3v | L3 = 3.
+-r3h | H3 = 2.
+r3h | L3 != 2 | H3 != 2.
+-r3v | L3 = 2.
 -r3v | H3 = 2.
-r3v | L3 != 3 | H3 != 2.
-r3h | r3v.
--r3v | -r3h.
+r3v | L3 != 2 | H3 != 2.
+r3v | r3h.
+-r4h | L4 = 1.
+-r4h | H4 = 2.
+r4h | L4 != 1 | H4 != 2.
+-r4v | L4 = 2.
+-r4v | H4 = 1.
+r4v | L4 != 2 | H4 != 1.
+r4v | r4h.
+-r5h | L5 = 1.
+-r5h | H5 = 2.
+r5h | L5 != 1 | H5 != 2.
+-r5v | L5 = 2.
+-r5v | H5 = 1.
+r5v | L5 != 2 | H5 != 1.
+r5v | r5h.
+-r6h | L6 = 2.
+-r6h | H6 = 1.
+r6h | L6 != 2 | H6 != 1.
+-r6v | L6 = 1.
+-r6v | H6 = 2.
+r6v | L6 != 1 | H6 != 2.
+r6v | r6h.
+-r7h | L7 = 2.
+-r7h | H7 = 1.
+r7h | L7 != 2 | H7 != 1.
+-r7v | L7 = 1.
+-r7v | H7 = 2.
+r7v | L7 != 1 | H7 != 2.
+r7v | r7h.
+-r8h | L8 = 2.
+-r8h | H8 = 1.
+r8h | L8 != 2 | H8 != 1.
+-r8v | L8 = 1.
+-r8v | H8 = 2.
+r8v | L8 != 1 | H8 != 2.
+r8v | r8h.
+-r9h | L9 = 1.
+-r9h | H9 = 1.
+r9h | L9 != 1 | H9 != 1.
+-r9v | L9 = 1.
+-r9v | H9 = 1.
+r9v | L9 != 1 | H9 != 1.
+r9v | r9h.
 X0 >= 0.
-X0 + L0 <= 8.
+X0 + L0 <= 6.
 Y0 >= 0.
 Y0 + H0 <= 4.
 X1 >= 0.
-X1 + L1 <= 8.
+X1 + L1 <= 6.
 Y1 >= 0.
 Y1 + H1 <= 4.
 X2 >= 0.
-X2 + L2 <= 8.
+X2 + L2 <= 6.
 Y2 >= 0.
 Y2 + H2 <= 4.
 X3 >= 0.
-X3 + L3 <= 8.
+X3 + L3 <= 6.
 Y3 >= 0.
 Y3 + H3 <= 4.
+X4 >= 0.
+X4 + L4 <= 6.
+Y4 >= 0.
+Y4 + H4 <= 4.
+X5 >= 0.
+X5 + L5 <= 6.
+Y5 >= 0.
+Y5 + H5 <= 4.
+X6 >= 0.
+X6 + L6 <= 6.
+Y6 >= 0.
+Y6 + H6 <= 4.
+X7 >= 0.
+X7 + L7 <= 6.
+Y7 >= 0.
+Y7 + H7 <= 4.
+X8 >= 0.
+X8 + L8 <= 6.
+Y8 >= 0.
+Y8 + H8 <= 4.
+X9 >= 0.
+X9 + L9 <= 6.
+Y9 >= 0.
+Y9 + H9 <= 4.
 X0 + L0 <= X1 | X1 + L1 <= X0 | Y0 + H0 <= Y1 | Y1 + H1 <= Y0.
 X0 + L0 <= X2 | X2 + L2 <= X0 | Y0 + H0 <= Y2 | Y2 + H2 <= Y0.
 X0 + L0 <= X3 | X3 + L3 <= X0 | Y0 + H0 <= Y3 | Y3 + H3 <= Y0.
+X0 + L0 <= X4 | X4 + L4 <= X0 | Y0 + H0 <= Y4 | Y4 + H4 <= Y0.
+X0 + L0 <= X5 | X5 + L5 <= X0 | Y0 + H0 <= Y5 | Y5 + H5 <= Y0.
+X0 + L0 <= X6 | X6 + L6 <= X0 | Y0 + H0 <= Y6 | Y6 + H6 <= Y0.
+X0 + L0 <= X7 | X7 + L7 <= X0 | Y0 + H0 <= Y7 | Y7 + H7 <= Y0.
+X0 + L0 <= X8 | X8 + L8 <= X0 | Y0 + H0 <= Y8 | Y8 + H8 <= Y0.
+X0 + L0 <= X9 | X9 + L9 <= X0 | Y0 + H0 <= Y9 | Y9 + H9 <= Y0.
 X1 + L1 <= X2 | X2 + L2 <= X1 | Y1 + H1 <= Y2 | Y2 + H2 <= Y1.
 X1 + L1 <= X3 | X3 + L3 <= X1 | Y1 + H1 <= Y3 | Y3 + H3 <= Y1.
+X1 + L1 <= X4 | X4 + L4 <= X1 | Y1 + H1 <= Y4 | Y4 + H4 <= Y1.
+X1 + L1 <= X5 | X5 + L5 <= X1 | Y1 + H1 <= Y5 | Y5 + H5 <= Y1.
+X1 + L1 <= X6 | X6 + L6 <= X1 | Y1 + H1 <= Y6 | Y6 + H6 <= Y1.
+X1 + L1 <= X7 | X7 + L7 <= X1 | Y1 + H1 <= Y7 | Y7 + H7 <= Y1.
+X1 + L1 <= X8 | X8 + L8 <= X1 | Y1 + H1 <= Y8 | Y8 + H8 <= Y1.
+X1 + L1 <= X9 | X9 + L9 <= X1 | Y1 + H1 <= Y9 | Y9 + H9 <= Y1.
 X2 + L2 <= X3 | X3 + L3 <= X2 | Y2 + H2 <= Y3 | Y3 + H3 <= Y2.
+X2 + L2 <= X4 | X4 + L4 <= X2 | Y2 + H2 <= Y4 | Y4 + H4 <= Y2.
+X2 + L2 <= X5 | X5 + L5 <= X2 | Y2 + H2 <= Y5 | Y5 + H5 <= Y2.
+X2 + L2 <= X6 | X6 + L6 <= X2 | Y2 + H2 <= Y6 | Y6 + H6 <= Y2.
+X2 + L2 <= X7 | X7 + L7 <= X2 | Y2 + H2 <= Y7 | Y7 + H7 <= Y2.
+X2 + L2 <= X8 | X8 + L8 <= X2 | Y2 + H2 <= Y8 | Y8 + H8 <= Y2.
+X2 + L2 <= X9 | X9 + L9 <= X2 | Y2 + H2 <= Y9 | Y9 + H9 <= Y2.
+X3 + L3 <= X4 | X4 + L4 <= X3 | Y3 + H3 <= Y4 | Y4 + H4 <= Y3.
+X3 + L3 <= X5 | X5 + L5 <= X3 | Y3 + H3 <= Y5 | Y5 + H5 <= Y3.
+X3 + L3 <= X6 | X6 + L6 <= X3 | Y3 + H3 <= Y6 | Y6 + H6 <= Y3.
+X3 + L3 <= X7 | X7 + L7 <= X3 | Y3 + H3 <= Y7 | Y7 + H7 <= Y3.
+X3 + L3 <= X8 | X8 + L8 <= X3 | Y3 + H3 <= Y8 | Y8 + H8 <= Y3.
+X3 + L3 <= X9 | X9 + L9 <= X3 | Y3 + H3 <= Y9 | Y9 + H9 <= Y3.
+X4 + L4 <= X5 | X5 + L5 <= X4 | Y4 + H4 <= Y5 | Y5 + H5 <= Y4.
+X4 + L4 <= X6 | X6 + L6 <= X4 | Y4 + H4 <= Y6 | Y6 + H6 <= Y4.
+X4 + L4 <= X7 | X7 + L7 <= X4 | Y4 + H4 <= Y7 | Y7 + H7 <= Y4.
+X4 + L4 <= X8 | X8 + L8 <= X4 | Y4 + H4 <= Y8 | Y8 + H8 <= Y4.
+X4 + L4 <= X9 | X9 + L9 <= X4 | Y4 + H4 <= Y9 | Y9 + H9 <= Y4.
+X5 + L5 <= X6 | X6 + L6 <= X5 | Y5 + H5 <= Y6 | Y6 + H6 <= Y5.
+X5 + L5 <= X7 | X7 + L7 <= X5 | Y5 + H5 <= Y7 | Y7 + H7 <= Y5.
+X5 + L5 <= X8 | X8 + L8 <= X5 | Y5 + H5 <= Y8 | Y8 + H8 <= Y5.
+X5 + L5 <= X9 | X9 + L9 <= X5 | Y5 + H5 <= Y9 | Y9 + H9 <= Y5.
+X6 + L6 <= X7 | X7 + L7 <= X6 | Y6 + H6 <= Y7 | Y7 + H7 <= Y6.
+X6 + L6 <= X8 | X8 + L8 <= X6 | Y6 + H6 <= Y8 | Y8 + H8 <= Y6.
+X6 + L6 <= X9 | X9 + L9 <= X6 | Y6 + H6 <= Y9 | Y9 + H9 <= Y6.
+X7 + L7 <= X8 | X8 + L8 <= X7 | Y7 + H7 <= Y8 | Y8 + H8 <= Y7.
+X7 + L7 <= X9 | X9 + L9 <= X7 | Y7 + H7 <= Y9 | Y9 + H9 <= Y7.
+X8 + L8 <= X9 | X9 + L9 <= X8 | Y8 + H8 <= Y9 | Y9 + H9 <= Y8.
 end_of_list.
 
 ============================== end of clauses for search =============
 
-% The largest natural number in the input is 8.
+% The largest natural number in the input is 6.
 
-============================== DOMAIN SIZE 8 =========================
+============================== DOMAIN SIZE 6 =========================
 
 ============================== MODEL =================================
 
-interpretation( 8, [number=1, seconds=0], [
+interpretation( 6, [number=1, seconds=9], [
 
-        function(H0, [ 2 ]),
+        function(H0, [ 1 ]),
 
-        function(H1, [ 2 ]),
+        function(H1, [ 1 ]),
 
-        function(H2, [ 2 ]),
+        function(H2, [ 1 ]),
 
         function(H3, [ 2 ]),
 
-        function(L0, [ 3 ]),
+        function(H4, [ 1 ]),
 
-        function(L1, [ 3 ]),
+        function(H5, [ 1 ]),
 
-        function(L2, [ 3 ]),
+        function(H6, [ 1 ]),
 
-        function(L3, [ 3 ]),
+        function(H7, [ 1 ]),
+
+        function(H8, [ 1 ]),
+
+        function(H9, [ 1 ]),
+
+        function(L0, [ 2 ]),
+
+        function(L1, [ 1 ]),
+
+        function(L2, [ 1 ]),
+
+        function(L3, [ 2 ]),
+
+        function(L4, [ 2 ]),
+
+        function(L5, [ 2 ]),
+
+        function(L6, [ 2 ]),
+
+        function(L7, [ 2 ]),
+
+        function(L8, [ 2 ]),
+
+        function(L9, [ 1 ]),
 
         function(X0, [ 0 ]),
 
         function(X1, [ 0 ]),
 
-        function(X2, [ 3 ]),
+        function(X2, [ 0 ]),
 
-        function(X3, [ 3 ]),
+        function(X3, [ 1 ]),
+
+        function(X4, [ 0 ]),
+
+        function(X5, [ 2 ]),
+
+        function(X6, [ 2 ]),
+
+        function(X7, [ 3 ]),
+
+        function(X8, [ 3 ]),
+
+        function(X9, [ 4 ]),
 
         function(Y0, [ 0 ]),
 
-        function(Y1, [ 2 ]),
+        function(Y1, [ 1 ]),
 
-        function(Y2, [ 0 ]),
+        function(Y2, [ 2 ]),
 
-        function(Y3, [ 2 ]),
+        function(Y3, [ 1 ]),
 
-        relation(r0h, [ 0 ]),
+        function(Y4, [ 3 ]),
 
-        relation(r0v, [ 1 ]),
+        function(Y5, [ 0 ]),
 
-        relation(r1h, [ 0 ]),
+        function(Y6, [ 3 ]),
+
+        function(Y7, [ 1 ]),
+
+        function(Y8, [ 2 ]),
+
+        function(Y9, [ 0 ]),
+
+        relation(r0h, [ 1 ]),
+
+        relation(r0v, [ 0 ]),
+
+        relation(r1h, [ 1 ]),
 
         relation(r1v, [ 1 ]),
 
-        relation(r2h, [ 0 ]),
+        relation(r2h, [ 1 ]),
 
         relation(r2v, [ 1 ]),
 
-        relation(r3h, [ 0 ]),
+        relation(r3h, [ 1 ]),
 
-        relation(r3v, [ 1 ])
+        relation(r3v, [ 1 ]),
+
+        relation(r4h, [ 0 ]),
+
+        relation(r4v, [ 1 ]),
+
+        relation(r5h, [ 0 ]),
+
+        relation(r5v, [ 1 ]),
+
+        relation(r6h, [ 1 ]),
+
+        relation(r6v, [ 0 ]),
+
+        relation(r7h, [ 1 ]),
+
+        relation(r7v, [ 0 ]),
+
+        relation(r8h, [ 1 ]),
+
+        relation(r8v, [ 0 ]),
+
+        relation(r9h, [ 1 ]),
+
+        relation(r9v, [ 1 ])
 ]).
 
 ============================== end of model ==========================
 
 ============================== STATISTICS ============================
 
-For domain size 8.
+For domain size 6.
 
-Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
-Ground clauses: seen=54, kept=54.
-Selections=159, assignments=1206, propagations=28, current_models=1.
-Rewrite_terms=7891, rewrite_bools=3780, indexes=0.
+Current CPU time: 0.00 seconds (total CPU time: 9.05 seconds).
+Ground clauses: seen=155, kept=155.
+Selections=957077, assignments=5742336, propagations=58, current_models=1.
+Rewrite_terms=100835430, rewrite_bools=25286748, indexes=0.
 Rules_from_neg_clauses=0, cross_offs=0.
 
 ============================== end of statistics =====================
 
-User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+User_CPU=9.05, System_CPU=0.41, Wall_clock=10.
 
 Exiting with 1 model.
 
-Process 3270 exit (max_models) Wed Nov 25 06:41:49 2020
-The process finished Wed Nov 25 06:41:49 2020
+Process 10984 exit (max_models) Sun Nov 29 08:37:14 2020
+The process finished Sun Nov 29 08:37:14 2020

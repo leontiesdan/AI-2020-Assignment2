@@ -6,13 +6,13 @@ tile = 100
 canv_width = 8
 canv_height = 4
 
-with open('data.txt') as csv_file:
+with open('rect.in') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     line_count = 0
     for row in csv_reader :
         if line_count == 1: 
-            canv_width = row[2]
-            canv_height = row[3]
+            canv_width = int(row[2])
+            canv_height = int(row[3])
             line_count += 1
         else:
             line_count += 1
@@ -23,7 +23,7 @@ c = Canvas(master, width=canv_width*tile, height=canv_height*tile)
 c.pack()
 
 
-with open('data.txt') as csv_file:
+with open('rect.in') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     line_count = 0
     for row in csv_reader :
@@ -33,7 +33,7 @@ with open('data.txt') as csv_file:
             we=("%02x"%random.randint(0,255))
             ge="#"
             color=ge+de+re+we
-            c.create_rectangle(row[0]*tile, row[1]*tile, row[0]*tile+row[2]*tile, row[1]*tile+row[3]*tile, fill=color)
+            c.create_rectangle(int(row[0])*tile, int(row[1])*tile, int(row[0])*tile+int(row[2])*tile, int(row[1])*tile+int(row[3])*tile, fill=color)
             line_count += 1
         else:
             line_count += 1
